@@ -11,7 +11,7 @@ import Navbar from "./Navbar.svelte";
 
 <style>
     :global(:root) {
-        --font-size:  calc( 3px +  1vw );
+        --font-size:  calc( 4px +  1vw );
         font-size: calc(var(--font-size));
         font-family: "Quicksand", sans-serif;
         color: white;
@@ -131,7 +131,7 @@ import Navbar from "./Navbar.svelte";
     .section__1__container {
         display: flex;
         height: 75%;
-        justify-content: space-between;
+        justify-content: center;
         flex-direction: column;
         text-align: center;
         min-width: 35%;
@@ -145,7 +145,7 @@ import Navbar from "./Navbar.svelte";
     }
     
     .section__1 {
-        min-height: 35%;
+        min-height: 50%;
         width: 100%;
         height: fit-content;
         background-image: url("/camping-night.jpg");
@@ -197,6 +197,7 @@ import Navbar from "./Navbar.svelte";
     .section__2__flexbox > * {
         width: fit-content;
         max-width: 50%;
+        margin: 3rem;
     }
 
     .section__2__content__image-container {
@@ -210,11 +211,25 @@ import Navbar from "./Navbar.svelte";
     }
 
     @media (max-width: 650px) {
+        :root {
+            --font-size: calc(4px + 1.5vw);
+        }
+
+        .section__1 {
+            min-height: 75%;
+        }
+
         .section__2__flexbox {
             flex-direction: column;
             align-items: center;
             width: 100%;
         }
+
+        .section__2__flexbox > * {
+            height: auto;
+            max-width: 100%;
+        }
+
     }
 </style>
 

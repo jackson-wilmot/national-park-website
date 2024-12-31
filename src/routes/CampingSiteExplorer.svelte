@@ -50,8 +50,8 @@
     }
 
     .camping-site-explorer {
-        width: 50%;
-        height: 50%;
+        width: 100%;
+        aspect-ratio: 1;
         overflow: hidden;
         color: white;
         position: relative;
