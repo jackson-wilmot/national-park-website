@@ -1,0 +1,41 @@
+.section__2 {
+    background-color: #0b0e16;
+    display: flex;
+    position: relative;
+    width: 100%;
+
+    &__flexbox {
+        display: flex;
+        min-width: 75%;
+        margin: 1rem;
+
+        @media (max-width: 650px) {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        > * {
+            width: fit-content;
+            max-width: 50%;
+            margin: 3rem;
+
+            @media (max-width: 650px) {
+                height: auto;
+                max-width: 100%;
+            }
+        }
+    }
+
+    &__content {
+        &__image-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+
+            img {
+                width: 30%;
+            }
+        }
+    }
+}

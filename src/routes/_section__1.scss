@@ -1,0 +1,62 @@
+.section__1 {
+    min-height: 50%;
+    width: 100%;
+    height: fit-content;
+    background-image: url("/camping-night.jpg");
+    background-size: cover;
+    aspect-ratio: 1.59;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 650px) {
+        min-height: 75%;
+    }
+
+    &::after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        content: "";
+        height: 25%;
+        width: 100%;
+        background: linear-gradient(transparent, #0b0e16);
+        pointer-events: none;
+    }
+
+    &__container {
+        display: flex;
+        height: 75%;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        min-width: 35%;
+        margin-inline: auto;
+        box-sizing: border-box;
+        top: 50%;
+        left: 50%;
+        padding-top: 15%;
+        width: min-content;
+        max-width: 75%;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h2 {
+                text-wrap: nowrap;
+                width: fit-content;
+            }
+        }
+    }
+
+    &__content {
+        width: 35%;
+        text-align: center;
+        text-wrap: wrap;
+        width: 100%;
+    }
+}
+

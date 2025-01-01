@@ -1,0 +1,70 @@
+.typewriter {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+}
+
+.typewriter::first-letter {
+    text-decoration: underline;
+}
+
+.finished {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: calc(1rem / 6.4);
+        right: 0;
+        width: 100%; 
+        height: calc(1rem / 8); 
+        background-color: white; 
+        transform: translateX(-100%);
+        transition: all 1000ms;
+    }
+
+    &.active {
+        @media (any-hover: none) {
+            &:active::after {
+                transform: translateX(0);
+            }
+        }
+
+        @media (any-hover: hover) {
+            &:hover::after {
+                transform: translateX(0);
+            }
+        }
+
+        &::after {
+            animation: 1000ms underline;
+        }
+
+        &::first-letter {
+            text-decoration: none;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+@keyframes underline {
+    0% {
+        transform: translateX(100%);
+    }
+    50% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(0); /* Hold at 0 for a bit */
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

@@ -9,7 +9,13 @@ import Navbar from "./Navbar.svelte";
     setTimeout(() => (ready = true), 1);
 </script>
 
-<style>
+<style lang="scss">
+    @use "_section__1.scss";
+    @use "_section__2.scss";
+    @use "_section__3.scss";
+
+    @use "_typewriter-effect.scss";
+
     :global(:root) {
         --font-size:  calc( 4px +  1vw );
         font-size: calc(var(--font-size));
@@ -20,75 +26,6 @@ import Navbar from "./Navbar.svelte";
 
     h3 {
         font-weight: 500;
-    }
-
-    .typewriter {
-        unicode-bidi: bidi-override;
-        direction: rtl;
-    }
-
-    .typewriter::first-letter {
-        text-decoration: underline;
-    }
-
-    .finished {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .finished::after {
-        content: "";
-        position: absolute;
-        bottom: calc(1rem / 6.4);
-        right: 0;
-        width: 100%; 
-        height: calc(1rem / 8); 
-        background-color: currentColor; 
-        transform: translateX(-100%);
-        transition: all 1000ms;
-    }
-
-    .hidden {
-        display: none;
-        width: 0;
-        height: 0;
-        opacity: 0;
-        visibility: hidden;
-    }
-
-    .finished.active::after {
-        animation: 1000ms underline;
-    }
-
-    @media (any-hover: hover) {
-        .finished.active:hover::after {
-            transform: translateX(0);
-        }
-    }
-
-    @media (any-hover: none) {
-        .finished.active:active::after {
-            transform: translateX(0);
-        }
-    }
-
-    .finished.active::first-letter {
-        text-decoration: none;
-    }
-
-    @keyframes underline {
-        0% {
-            transform: translateX(100%);
-        }
-        50% {
-            transform: translateX(0);
-        }
-        75% {
-            transform: translateX(0); /* Hold at 0 (center) for a bit */
-        }
-        100% {
-            transform: translateX(-100%);
-        }
     }
 
     .bg-white {
@@ -107,17 +44,10 @@ import Navbar from "./Navbar.svelte";
         height: auto;
         aspect-ratio: 4.5;
         font-size: 1rem;
-    }
 
-    button:hover {
-        cursor: pointer;
-    }
-
-    .section-1-content {
-        width: 35%;
-        text-align: center;
-        text-wrap: wrap;
-        width: 100%;
+        :hover {
+            cursor: pointer;
+        }
     }
 
     .larger {
@@ -128,109 +58,14 @@ import Navbar from "./Navbar.svelte";
         font-weight: 600;
     }
 
-    .section__1__container {
-        display: flex;
-        height: 75%;
-        justify-content: center;
-        flex-direction: column;
-        text-align: center;
-        min-width: 35%;
-        margin-inline: auto;
-        box-sizing: border-box;
-        top: 50%;
-        left: 50%;
-        padding-top: 15%;
-        width: min-content;
-        max-width: 75%;
-    }
-    
-    .section__1 {
-        min-height: 50%;
-        width: 100%;
-        height: fit-content;
-        background-image: url("/camping-night.jpg");
-        background-size: cover;
-        aspect-ratio: 1.59;
-        box-sizing: border-box;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .section__1::after {
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        content: "";
-        height: 25%;
-        width: 100%;
-        background: linear-gradient(transparent, #0b0e16);
-        pointer-events: none;
-    }
-
-    .section__1__container > div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .section__1__container h2 {
-        text-wrap: nowrap;
-        width: fit-content;
-    }
-
-    /* section 2*/
-
-    .section__2 {
-        background-color: #0b0e16;
-        display: flex;
-        position: relative;
-        width: 100%;
-    }
-
-    .section__2__flexbox {
-        display: flex;
-        min-width: 75%;
-        margin: 1rem;
-    }
-
-    .section__2__flexbox > * {
-        width: fit-content;
-        max-width: 50%;
-        margin: 3rem;
-    }
-
-    .section__2__content__image-container {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-    }
-
-    .section__2__content__image-container > img {
-        width: 30%;
-    }
-
     @media (max-width: 650px) {
         :root {
             --font-size: calc(4px + 1.5vw);
         }
-
-        .section__1 {
-            min-height: 75%;
-        }
-
-        .section__2__flexbox {
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-
-        .section__2__flexbox > * {
-            height: auto;
-            max-width: 100%;
-        }
-
     }
+
+
+      
 </style>
 
 
@@ -246,7 +81,7 @@ import Navbar from "./Navbar.svelte";
                 <h3 in:fade={{delay: 400, duration: 1000}}>Discover The Great Outdoors</h3>      
             </div>
 
-            <div class="section-1-content">
+            <div class="section__1__content">
                 <p>
                     Discover the magic of untouched landscapes, connect with nature in
                     its purest form, and awaken your sense of wonder as you navigate
@@ -286,5 +121,28 @@ import Navbar from "./Navbar.svelte";
         </div>
 
         <SectionTitle title="Explore Special Camping Spots" orientation="right" />
+</div>
+
+<div class="section__3">
+    <img alt="A treeline" src="/treeline.svg" class="section__3__divider" />
+    <div class="section__3__content">
+        <div>
+            <div>
+
+            </div>
+            <img src="/bear-with-text.svg" alt="A bear"/>
+        </div>
+        <div>
+            <img />
+            <p>
+                <i class="quote-open">"</i>Join us on a journey that promises not
+                just a glimpse of the animal realm, but
+                an immersive adventure that leaves you
+                with a nev.'found reverence for the
+                intricate tapestry of life
+            </p>
+        </div>
+        
+    </div>
 </div>
 
