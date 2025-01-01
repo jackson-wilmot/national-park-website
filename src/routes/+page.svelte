@@ -45,7 +45,7 @@ import Navbar from "./Navbar.svelte";
         aspect-ratio: 4.5;
         font-size: 1rem;
 
-        :hover {
+        &:hover {
             cursor: pointer;
         }
     }
