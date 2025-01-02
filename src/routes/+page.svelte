@@ -39,8 +39,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 100px;
-        height: 100px;
+        width: 8.23%;
+        aspect-ratio: 1;
         border-radius: 50%;
         border: 2px dotted white;
         border-spacing: dotted;
