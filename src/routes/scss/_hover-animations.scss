@@ -17,7 +17,8 @@ button.fill-hover {
         height: 100%;
         mix-blend-mode: difference;
         background-color: white;
-
+        border: none;
+        
         // use clip-path for animation as mix-blend-mode breaks transform: translateX
         clip-path: inset(0 100% 0 0);
         transition: clip-path 250ms ease-in;
