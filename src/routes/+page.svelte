@@ -1,20 +1,25 @@
 <script>
     import { onMount } from "svelte";
     import CampingSiteExplorer from "./CampingSiteExplorer.svelte";
-import Navbar from "./Navbar.svelte";
+    import Navbar from "./Navbar.svelte";
+    import ArrowDown from "./ArrowDown.svelte";
     import SectionTitle from "./SectionTitle.svelte";
     import { typewriter } from "./transition.js";
     import { fade } from "svelte/transition";
+
     let ready = $state(false);
     setTimeout(() => (ready = true), 1);
 </script>
 
 <style lang="scss">
-    @use "_section__1.scss";
-    @use "_section__2.scss";
-    @use "_section__3.scss";
+    @use "scss/_default-element-styles.scss";
+    @use "scss/_typewriter-effect.scss";
+    @use "scss/_font-styles.scss";
+    @use "scss/_hover-animations.scss";
 
-    @use "_typewriter-effect.scss";
+    @use "scss/_section__1.scss";
+    @use "scss/_section__2.scss";
+    @use "scss/_section__3.scss";
 
     :global(:root) {
         --font-size:  calc( 4px +  1vw );
@@ -24,48 +29,35 @@ import Navbar from "./Navbar.svelte";
         background-color: #0b0e16;
     }
 
-    h3 {
-        font-weight: 500;
-    }
-
-    .bg-white {
-        background-color: white;
-        color: black;
-    }
-
-    .rounded {
-        border-radius: 100px;
-    }
-
-    button {
-        border: none;
-        outline: none;
-        padding: 1rem;
-        height: auto;
-        aspect-ratio: 4.5;
-        font-size: 1rem;
-
-        &:hover {
-            cursor: pointer;
-        }
-    }
-
-    .larger {
-        font-size: 1.35rem;
-    }
-
-    .bold {
-        font-weight: 600;
-    }
-
     @media (max-width: 650px) {
         :root {
             --font-size: calc(4px + 1.5vw);
         }
+    } 
+    
+    .dotted-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px dotted white;
+        border-spacing: dotted;
+        margin-top: 50px;
     }
 
+    .why-we-are-special {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+        width: 100%;
 
-      
+        > * {
+            margin: 1rem;
+        }
+    }
 </style>
 
 
@@ -126,23 +118,46 @@ import Navbar from "./Navbar.svelte";
 <div class="section__3">
     <img alt="A treeline" src="/treeline.svg" class="section__3__divider" />
     <div class="section__3__content">
-        <div>
-            <div>
-
+        <div class="section__3__content__1">
+            <div class="section__3__content__1__header-1">
+                <h3>Discover Captivating Wildlife</h3>
+                <p>
+                    From graceful deer grazing in meadows to the melodious songs of birds
+                    echoing through the trees, our park is a haven for both native and exotic
+                    species. Our commitment to conservation ensures that you'll encounter
+                    creatures thriving in habitats carefully designed to mirror their natural
+                    environments. 
+                    <br />
+                    <br />
+                    Observe the intricate behaviors of playful otters as they frolic in their
+                    aquatic playground, or witness the majestic flight of eagles soaring high
+                    above.
+                </p>
+                <button class="fill-hover">Show All Animals</button>
             </div>
             <img src="/bear-with-text.svg" alt="A bear"/>
-        </div>
-        <div>
-            <img />
-            <p>
-                <i class="quote-open">"</i>Join us on a journey that promises not
-                just a glimpse of the animal realm, but
-                an immersive adventure that leaves you
-                with a nev.'found reverence for the
-                intricate tapestry of life
-            </p>
-        </div>
-        
+        </div>  
+        <div class="section__3__content__2">
+            <div class="section__3__content__2__img"></div>
+            <div class="section__3__content__2__quote">
+                <blockquote class="blockquote--single-quote">
+                    Join us on a journey that promises not
+                    just a glimpse of the animal realm, but
+                    an immersive adventure that leaves you
+                    with a newfound reverence for the
+                    intricate tapestry of life
+                </blockquote>
+                <span>
+                    Richard Zong
+                    <p>Park Guide</p>
+                </span>
+            </div>
+        </div>                 
     </div>
-</div>
 
+    <SectionTitle title="Discover Captivating Wildlife" orientation="left" />
+</div>
+<div class="why-we-are-special">
+    <h4>Why We're Special</h4>
+    <div class="dotted-circle"><ArrowDown /></div>
+</div>

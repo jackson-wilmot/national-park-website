@@ -105,16 +105,16 @@
     }
 
     .children-hover-underline a.lightblue::after {
-            color: #8eb8e7;
+            color: var(--light-blue);
     }
 
     .children-hover-underline a:hover,
     .children-hover-underline a:hover::after {
-        color: #8eb8e7;
+        color: var(--light-blue);
     }
 
     .children-hover-underline a.lightblue::after {
-        color: #8eb8e7;
+        color: var(--light-blue);
     }
 
     .children-hover-underline a.lightblue:hover,

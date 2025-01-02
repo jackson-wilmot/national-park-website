@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --light-blue: #8eb8e7;
+}
+
+.bg-white {
+    background-color: white;
+    color: black;
+}
+
+.rounded {
+    border-radius: 100px;
+}
+
+.larger {
+    font-size: 1.35rem;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.blockquote {
+    display: block;
+    position: relative;
+    margin: .5rem;
+
+    font-family: "Libre Baskervile", sans-serif;
+    quotes: "“" "”" "‘" "’";
+
+    text-indent: -0.45em;
+
+    @supports ( hanging-punctuation: first) {
+        blockquote {
+          text-indent: 0;
+          hanging-punctuation: first;
+        }
+      }
+
+    // work on quotation block
+    &::before,
+    &::after {
+        font-size: 3rem;
+    }
+
+    &--single-quote,
+    &--double-quote {
+        &::before {
+            content: open-quote;
+            transform: translateY(30%);
+        }
+
+        &::before,
+        &::after {
+            @extend .blockquote;
+        }
+    }
+
+    &--single-quote {
+        &::before {
+            height: 1.5rem;
+        }
+    }
+
+    &--double-quote {
+        &::after {
+            content: close-quote;
+            display: block;
+            position: relative;
+            left: 100%;
+            width: 0;
+        }   
+    }
+}
+
+.light-blue {
+    color: var(--light-blue);
+}

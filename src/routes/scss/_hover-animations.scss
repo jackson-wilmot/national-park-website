@@ -1,0 +1,40 @@
+/* A stylesheet for hover animations for different elements */
+
+button.fill-hover {
+    /* On hover fill background of button with white and use inverse text color */
+    
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+    height: 3rem;
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        mix-blend-mode: difference;
+        background-color: white;
+
+        // use clip-path for animation as mix-blend-mode breaks transform: translateX
+        clip-path: inset(0 100% 0 0);
+        transition: clip-path 250ms ease-in;
+    }
+
+    &:hover {
+        &::after {
+            clip-path: inset(0 0 0 0);
+            z-index: 1;
+        }
+    }
+
+    @supports (any-hover: none) {
+        &:active {
+            &::after {
+                clip-path: inset(0 100% 0 0);
+            }
+        }
+    }
+}

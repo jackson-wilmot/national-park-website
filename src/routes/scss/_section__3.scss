@@ -1,0 +1,141 @@
+.section__3 {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    $background-color: #282428;
+    position: relative;
+    margin-bottom: 0;
+
+    &__content {
+        margin: 0;
+        background-color: $background-color;
+        @media (max-width: 650px) {
+            padding-inline: 4rem;
+            box-sizing: border-box;   
+        }
+
+        &__1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem;
+    
+            > * {
+                width: 50%;
+            }
+
+            @media (max-width: 650px) {
+                
+                img {
+                    display: none;
+                }
+
+                &__header-1 {
+                    width: 100%;
+                    margin: 0;
+                }
+            }
+            &__header-1 {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                text-align: center;
+
+                h2 {
+                    color: white;
+                }
+          
+                button {
+                    background-color: transparent;
+                    border: 2px solid white;
+                    color: white;
+                    box-sizing: border-box;
+                    aspect-ratio: 4.5;
+                    padding: .9rem;
+                }
+
+                p {
+                    color: rgba(255, 255, 255, 0.65);
+                }
+            }
+        }
+
+        &__2 {
+            background-color: #1b171a;
+            margin: 5% 25%;
+            
+            display: flex;
+            @media (max-width: 650px) {
+                flex-direction: column;
+                width: 95%;
+                margin-inline: 0;
+
+                &__img {
+                    display: none;
+                }
+
+                &__quote {
+                    width: 100% !important;
+                    margin: 5%;
+                }
+
+                blockquote {
+                    margin: 0;
+                    width: 93%;
+                }
+
+                span {
+                    margin-left: 0 !important;
+                }
+            }
+            
+            &__img {
+                width: 50%;
+                background: url("/man-running-in-forest.jpg") no-repeat center center;
+                background-size: cover;
+            }
+
+            &__quote {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                width: 50%;
+
+                blockquote {
+                    text-wrap: wrap;
+                }
+
+                span {
+                    margin-left: 2rem;
+                    margin-bottom: 1.5rem;
+                    
+                    font-weight: 400;
+                    p {
+                        font-size: .875rem;
+                        text-transform: uppercase;
+                        margin-top: 0;
+                        color: var(--light-blue);
+                    }
+                }
+            }
+
+        }
+    }
+
+    &__divider {
+        width: 100%;
+    }
+
+    &::after {
+        position: absolute;
+        left: 0;
+        bottom: -25%;
+        content: "";
+        height: 25%;
+        width: 100%;
+        background: linear-gradient($background-color, transparent);
+        pointer-events: none;
+    }
+}
