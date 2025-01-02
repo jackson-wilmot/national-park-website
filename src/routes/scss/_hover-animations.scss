@@ -1,5 +1,3 @@
-/* A stylesheet for hover animations for different elements */
-
 button.fill-hover {
     /* On hover fill background of button with white and use inverse text color */
     
@@ -7,6 +5,7 @@ button.fill-hover {
     overflow: hidden;
     width: fit-content;
     height: 3rem;
+    isolation: isolate;
 
     &::after {
         content: "";
@@ -17,8 +16,7 @@ button.fill-hover {
         height: 100%;
         mix-blend-mode: difference;
         background-color: white;
-        border: none;
-        
+
         // use clip-path for animation as mix-blend-mode breaks transform: translateX
         clip-path: inset(0 100% 0 0);
         transition: clip-path 250ms ease-in;
