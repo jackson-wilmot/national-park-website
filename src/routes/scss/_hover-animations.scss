@@ -6,6 +6,9 @@ button.fill-hover {
     width: fit-content;
     height: 3rem;
     isolation: isolate;
+    border: none;
+    color: white;
+    transition: color 150ms ease-in;
 
     &::after {
         content: "";
@@ -14,23 +17,24 @@ button.fill-hover {
         left: 0;
         width: 100%;
         height: 100%;
-        mix-blend-mode: difference;
         background-color: white;
-
-        // use clip-path for animation as mix-blend-mode breaks transform: translateX
-        clip-path: inset(0 100% 0 0);
-        transition: clip-path 250ms ease-in;
+        transform: translateX(-100%);
+        transition: transform 150ms ease-in;
+        z-index: -1;
     }
 
     &:hover {
+        color: black;
+
         &::after {
-            clip-path: inset(0 0 0 0);
-            z-index: 1;
+            transform: translateX(0);
         }
     }
 
     @supports (any-hover: none) {
         &:active {
+            color: black;
+
             &::after {
                 clip-path: inset(0 100% 0 0);
             }
