@@ -1,10 +1,13 @@
 import adapter from "@sveltejs/adapter-vercel";
 import { sveltePreprocess } from 'svelte-preprocess';
+import autoprefixer from 'autoprefixer';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	preprocess: sveltePreprocess({
-		// ...svelte-preprocess options
+		postcss: {
+			plugins: [autoprefixer()]
+		}
 	  }),
 	kit: {
 		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
