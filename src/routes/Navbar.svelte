@@ -43,7 +43,7 @@
     }
 
     .navbar {
-        position: absolute;
+        position: static;
         inset: 0;
         height: fit-content;
     }
