@@ -70,6 +70,12 @@
                 <h2 style:margin="0" class="typewriter" in:typewriter>
                     {"Your Adventure Begins Here!".split("").reverse().join("")}
                 </h2>
+                <!--
+                 sets the width as the width is fit-content or something im not bothered to check.
+                 if this is not here then the parent element will resize as .typewriter is animated.
+                 dont remove at all.
+                -->
+                <h2 class=" s-y_bCXRrkrYfP" style="margin: 0px; visibility: hidden; height: 0;">!ereH snigeB erutnevdA ruoY</h2>
                 <h3 in:fade={{delay: 400, duration: 1000}}>Discover The Great Outdoors</h3>      
             </div>
 
