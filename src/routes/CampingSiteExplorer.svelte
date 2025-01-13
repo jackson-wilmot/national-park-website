@@ -111,4 +111,21 @@
         opacity: 0;
         display: none;
     }
+
+    @media (max-width: 650px) {
+        .camping-site-explorer__desc {
+            background: linear-gradient(#0b0e16 75%, transparent );
+
+            width: 100%;
+            text-align: center;
+
+            button {
+                width: 50%;
+            }
+
+            .buttons {
+                width: 100%;
+            }
+        }
+    }
 </style>
