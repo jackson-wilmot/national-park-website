@@ -36,7 +36,7 @@ button.fill-hover {
             color: black;
 
             &::after {
-                clip-path: inset(0 100% 0 0);
+                transform: translateX(0);
             }
         }
     }
