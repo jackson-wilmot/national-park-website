@@ -105,6 +105,10 @@
         cursor: default;
     }
 
+    button:active {
+        background-color: rgba(128, 128, 128, 0.064);
+    }
+
     .hidden {
         width: 0;
         height: 0;
