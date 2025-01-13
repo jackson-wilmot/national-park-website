@@ -29,6 +29,7 @@
                 disabled={prevDisabled}
                 onclick={() => locationId--}><ArrowLeft /></button
             >
+            <p style:margin="auto" style:font-size="1rem">{locationId + 1}/{locations.length}</p>
             <button
                 id="next"
                 disabled={nextDisabled}
