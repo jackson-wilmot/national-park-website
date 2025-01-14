@@ -14,12 +14,15 @@
     let largerImageVisible = $state(false);
     let largerImageSrc = $state("");
     let largerImageAlt = $state("");
+    let largerImageAspect = $state(1)
+
     setTimeout(() => (ready = true), 1);
 
     function showLargerImage(event) {
         largerImageVisible = true;
         largerImageSrc = event.target.getAttribute("data-src");
         largerImageAlt = event.target.getAttribute("alt");
+        largerImageAspect = event.target.naturalWidth / event.target.naturalHeight;
     }
 </script>
 
@@ -127,6 +130,10 @@
             height: 5rem;
             cursor: pointer;
         }
+
+        img {
+            width: 90%;
+        }
     }
 
     .filter {
@@ -144,7 +151,7 @@
     <div class="filter"></div>
     <div class="larger-image-container">
         <button aria-label="Close" onclick={() => largerImageVisible = false} class="cross-button"></button>
-        <img src={largerImageSrc} alt={largerImageAlt} />
+        <img src={largerImageSrc} alt={largerImageAlt} style:aspect-ratio={largerImageAspect} />
     </div>
 {/if}
 
