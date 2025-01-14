@@ -1,9 +1,12 @@
 <script>
     import { onMount } from "svelte";
+    import { lazyLoad } from "./actions.svelte";
+
     import CampingSiteExplorer from "./CampingSiteExplorer.svelte";
     import Navbar from "./Navbar.svelte";
     import ArrowDown from "./ArrowDown.svelte";
     import SectionTitle from "./SectionTitle.svelte";
+
     import { typewriter } from "./transition.js";
     import { fade } from "svelte/transition";
 
@@ -20,6 +23,7 @@
     @use "scss/_section__1.scss";
     @use "scss/_section__2.scss";
     @use "scss/_section__3.scss";
+    @use "scss/_section__4.scss";
 
     :global(:root) {
         --font-size:  calc( 4px +  1vw );
@@ -51,8 +55,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 100px;
         width: 100%;
+        position: relative;
+        z-index: 2;
 
         > * {
             margin: 1rem;
@@ -61,7 +66,7 @@
 </style>
 
 
-<div class="section__1" style:height="fit-content" style:position="relative">
+<div class="section__1" style:height="fit-content" style:position="relative" use:lazyLoad data-src="/camping-night.jpg">
     <i class="hidden finished active"></i>
     <Navbar title="ParkScape Adventures" />
     {#if ready}
@@ -111,9 +116,9 @@
                 </p>
 
                 <div class="section__2__content__image-container">
-                    <img src="/preview-image-1.webp" alt="View of a swamp" />
-                    <img src="/preview-image-2.webp" alt="Seaside" />
-                    <img src="/preview-image-3.webp" alt="A view of a lake"/>
+                    <img src="/low-quality/preview-image-1.png" data-src="/preview-image-1.webp" alt="View of a swamp" use:lazyLoad loading="lazy" />
+                    <img src="/low-quality/preview-image-2.png" data-src="/preview-image-2.webp" alt="Seaside" use:lazyLoad loading="lazy" />
+                    <img src="/low-quality/preview-image-3.png" data-src="/preview-image-3.webp" alt="A view of a lake" use:lazyLoad loading="lazy" />
                 </div>
             </div>
         </div>
@@ -144,7 +149,7 @@
             <img src="/bear-with-text.svg" alt="A bear"/>
         </div>  
         <div class="section__3__content__2">
-            <div class="section__3__content__2__img"></div>
+            <div class="section__3__content__2__img" use:lazyLoad data-src="/man-running-in-forest.jpg"></div>
             <div class="section__3__content__2__quote">
                 <blockquote class="blockquote--single-quote">
                     Join us on a journey that promises not
@@ -163,7 +168,41 @@
 
     <SectionTitle title="Discover Captivating Wildlife" orientation="left" />
 </div>
+
 <div class="why-we-are-special">
     <h4>Why We're Special</h4>
     <div class="dotted-circle"><ArrowDown /></div>
+</div>
+
+<div class="section__4" use:lazyLoad data-src="/man-under-a-ridge-canyon.jpg">
+    <div class="section__4__statistics">
+        <p>
+            With each visit, you contribute to the ongoing story of
+            conservation, ensuring that the magic of our national park
+            endures for generations to come.
+        </p>
+        <div class="section__4__statistics__flexbox">
+            <div>
+                <span>836</span>
+                <p>
+                Daily
+                Guided Guests</p>
+            </div>
+            <div>
+                <span>98<i>%</i></span>
+                <p>Vistor's
+                    Satisfied</p>
+            </div>
+            <div>
+                <span>70<i>+</i></span>
+                <p>Biodiversity
+                    Species</p>
+            </div>
+            <div>
+                <span>158<i>K</i></span>
+                <p>Community
+                    Followers</p>
+            </div>
+        </div>
+    </div>
 </div>
