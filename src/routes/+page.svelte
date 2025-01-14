@@ -385,4 +385,6 @@
     </div>
 
     <SocialContacts />
+
+    <h2>DESIGNED BY <a style:color="black" href="https://dribbble.com/coreyliyi">LI YI</a></h2>
 </footer>
