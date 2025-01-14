@@ -27,7 +27,7 @@
     </a>
 
     <!-- svelte-ignore a11y_consider_explicit_label -->
-    <a target="_blank" href="https://www.facebook.com">
+    <a target="_blank" href="https://www.discord.com">
         <i class="fa-brands fa-discord"></i>
     </a>
 
