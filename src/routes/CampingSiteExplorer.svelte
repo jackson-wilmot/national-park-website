@@ -17,6 +17,37 @@
 
     let locationName = $derived(locations[locationId][0]);
     let locationType = $derived(locations[locationId][2]);
+
+    // move the image when mouse is down
+    function onmousedown(originEvent) {
+        const originX = originEvent.clientX;
+        const originY = originEvent.clientY;
+
+        const attributeX = originEvent.target.getAttribute("data-x");
+        const attributeY = originEvent.target.getAttribute("data-y");
+
+        function onmousemove(event) {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            const deltaX = mouseX - originX;
+            const deltaY = mouseY - originY;
+
+            originEvent.target.style.top = `${+attributeY + deltaY}px`;
+            originEvent.target.style.left = `${+attributeX + deltaX}px`;
+
+            originEvent.target.setAttribute("data-x", +attributeX + deltaX);
+            originEvent.target.setAttribute("data-y", +attributeY + deltaY);
+        }
+
+        function onmouseup(event) {
+            window.removeEventListener("mousemove", onmousemove);
+            window.removeEventListener("mouseup", onmouseup);
+        }
+
+        window.addEventListener("mousemove", onmousemove);
+        window.addEventListener("mouseup", onmouseup);
+    }
 </script>
 
 <div class="camping-site-explorer">
@@ -38,7 +69,7 @@
         </div>
     </div>
     {#each locations as location, i}
-        <img class:hidden={i!==locationId} class="js-camping-site-explorer__img" src={location[1]} alt={location[2]} />
+        <img class:hidden={i!==locationId} class="js-camping-site-explorer__img" src={location[1]} alt={location[2]} aria-roledescription="Move map with mouse" draggable="false" {onmousedown} />
     {/each}
 </div>
 
@@ -48,7 +79,10 @@
         max-width: 150%;
         max-height: 150%;
         transform: translate(-50%, -50%);
+        position: absolute;
+        cursor: move;
     }
+
 
     .camping-site-explorer {
         width: 100%;
@@ -65,6 +99,7 @@
         width: 100%;
         height: 100%;
         background: radial-gradient(transparent, #0b0e16 70%);
+        pointer-events: none;
     }
 
     button {
