@@ -6,6 +6,9 @@
     import Navbar from "./Navbar.svelte";
     import ArrowDown from "./ArrowDown.svelte";
     import SectionTitle from "./SectionTitle.svelte";
+    import Rating from "./Rating.svelte";
+    import Statistics from "./Statistics.svelte";
+    import SocialContacts from "./SocialContacts.svelte";
 
     import { typewriter } from "./transition.js";
     import { fade } from "svelte/transition";
@@ -36,6 +39,8 @@
     @use "scss/_section__2.scss";
     @use "scss/_section__3.scss";
     @use "scss/_section__4.scss";
+    @use "scss/_section__5.scss";
+    @use "scss/_footer.scss";
 
     :global(:root) {
         --font-size:  calc( 4px +  1vw );
@@ -295,3 +300,89 @@
         </div>
     </div>
 </div>
+
+<div class="section__5">
+    <h2>Top Things to do at Park</h2>
+    <div class="section__5__flexbox__card-container">
+        <div class="section__5__flexbox__card">
+            <img src="/low-quality/campervan.png" data-src="/campervan.jpg" alt="Two vans parked side by side on a dirt road in a green forest" use:lazyLoad />
+            <div>
+                <h3>Special Private Tour</h3>
+                <Rating rating=5 />
+                <p>Whether you're seeking a romantic getaway, a family adventure, or a
+                    solo expedition, our private tours ensure that your journey through our
+                    park becomes an unforgettable and truly exceptional escape.
+                    Discover the park's secrets at your own pace and immerse yourself in
+                    its beauty with the ultimate blend of comfort and exploration.</p>
+                <Statistics views=1800 likes=592 />
+                <div class="section__5__flexbox__card__details">
+                    <button class="fill-hover--black">See Details</button>
+                    <p>Starts at $<span class="larger bold">599</span>/day</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section__5__flexbox__card">
+            <img src="/low-quality/a-woman-and-her-child-on-a-hill.png" data-src="/a-woman-and-her-child-on-a-hill.webp" alt="A mother and a child standing on a dirt track on a rocky hill" use:lazyLoad />
+            <div>
+                <h3>Customised Group Hiking</h3>
+                <Rating rating=5 />
+                <p>Our expert guides ensure safety and share their local knowledge,
+                    enhancing your understanding of the park's ecology and history. Unite
+                    with nature, bond with your group, and forge unforgettable memories
+                    on a trail designed exclusively for you.</p>
+                <Statistics views=1700 likes=478 />
+                <div class="section__5__flexbox__card__details">
+                    <button class="fill-hover--black">See Details</button>
+                    <p>Starts at $<span class="larger bold">399</span>/group</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section__5__flexbox__card">
+            <img src="low-quality/kayak-in-lake.png" data-src="/kayak-in-lake.jpg" alt="A kayak docked near the shore in a lake surrounded with green forest trees" use:lazyLoad />
+            <div>
+                <h3>Kayak & Drifting Journey</h3>
+                <Rating rating=4 />
+                <p>Our service offers an unforgettable blend of kayaking and drifting,
+                    perfect for both novice and experienced water enthusiasts. Navigate
+                    through lush landscapes, witness hidden coves, and soak in
+                    breathtaking views that can only be experienced from the water.</p>
+                <Statistics views=1660 likes=453 />
+                <div class="section__5__flexbox__card__details">
+                    <button class="fill-hover--black">See Details</button>
+                    <p>Starts at $<span class="larger bold">99</span>/person</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <SectionTitle title="Top Things to do in Park" orientation="right" lineColor="black" />
+</div>
+
+<div class="footer" data-src="/mountain.jpg" use:lazyLoad>
+    <div>
+        <h2>Your Exploration Starts Here</h2>
+        <p>
+            Our mission is to connect you with the wonders of our parks,
+            offering tailored experiences for every adventurer.
+            Embrace the call of the wild and let the journey unfold.
+        </p>
+        <hr />
+        <div class="footer__contact">
+            <a href="tel:+1(514) 1234567">+1(514) - 1234567</a>
+            <a href="mailto:info@parkspace-adventures.com">info@parkspace-adventures.com</a>
+        </div>
+    </div>
+</div>
+<footer>
+    <h2>Parkscape Adventures</h2>
+    <div class="footer__links">
+        <a href="#about-camp">About Camp</a>
+        <a href="#events">Events</a>
+        <a  href="#animals">Animals</a>
+        <a href="#faq">FAQs</a>
+        <a href="#the-team">The Team</a>
+    </div>
+
+    <SocialContacts />
+</footer>
