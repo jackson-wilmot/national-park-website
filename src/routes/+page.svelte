@@ -220,7 +220,7 @@
         <SectionTitle title="Explore Special Camping Spots" orientation="right" />
 </div>
 
-<div class="section__3">
+<div id="#animals" class="section__3">
     <img alt="A treeline" src="/treeline.svg" class="section__3__divider" />
     <div class="section__3__content">
         <div class="section__3__content__1">
