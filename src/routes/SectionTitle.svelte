@@ -1,5 +1,5 @@
 <script>
-    const { title = "Default Title", orientation = "left" } = $props();
+    const { title = "Default Title", orientation = "left", lineColor = "white" } = $props();
 </script>
 
 <style>
@@ -32,12 +32,11 @@
     .line {
         height: calc(var(--font-size) * 0.09375);
         width: calc(var(--font-size) * 9.375);
-        background-color: white;
         display: inline-block;
     }
 </style>
 
 <div class="section-title {orientation === "left" ? "section-left" : "section-right"}">
     <p style:text-wrap="nowrap" style:display="inline">{title}</p>
-    <i class="line"></i>
+    <i class="line" style:background-color={lineColor}></i>
 </div>
