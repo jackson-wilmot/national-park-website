@@ -1,0 +1,70 @@
+.section__4 {
+    $image-aspect-ratio: 1.3332;
+    background: url("/low-quality/man-under-a-ridge-canyon.png") no-repeat right center;
+    aspect-ratio: $image-aspect-ratio;
+    width: auto;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+
+    &__statistics {
+        position: absolute;
+        left: 10%;
+        bottom: 10%;
+        width: 45%;
+
+        > p {
+            width: 80%;
+        }
+
+        &__flexbox {
+            display: flex;
+            justify-content: space-between;
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: start;
+                span {
+                    font-size: 3rem;
+                    font-weight: 800;
+    
+                    i {
+                        font-size: 2rem;
+                        font-weight: 100;
+                        font-style: normal;
+                    }
+                }
+    
+                p {
+                    text-wrap: wrap;
+                    text-align: start;
+                    white-space: pre-line;
+                    text-transform: uppercase;
+                    font-weight: 500;
+                    font-size: .85em;
+                }
+            }
+        }
+        
+        @media(max-width: 650px) {
+               display: flex;
+               flex-direction: column-reverse; 
+               bottom: 95%;
+               transform: translateY(100%);
+               z-index: 2;
+               width: 100%; 
+               margin-inline: auto;
+               left: 0;
+
+               > p {
+                    margin: 0 auto;
+                    text-align: center;
+               }
+
+               &__flexbox {
+                    justify-content: space-evenly;
+               }
+        }
+    }
+}
