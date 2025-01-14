@@ -8,6 +8,17 @@
             color: black;
         }
     }
+
+    @media (max-width: 650px) {
+        i {
+            font-size: 2rem;
+        }
+
+        div {
+            justify-content: space-evenly;
+            width: 100%;
+        }
+    }
 </style>
 
 <div>
