@@ -48,6 +48,53 @@
         window.addEventListener("mousemove", onmousemove);
         window.addEventListener("mouseup", onmouseup);
     }
+
+    function preventDefaultTouch(event) {
+        event.preventDefault();
+    }
+
+    function enableTouchScroll() {
+        document.body.removeEventListener('touchmove', preventDefaultTouch, { passive: false });
+    }
+
+    function disableTouchScroll() {
+        document.body.addEventListener('touchmove', preventDefaultTouch, { passive: false });
+    }
+
+    // move the image when touch is down
+    function ontouchstart(originEvent) {
+        disableTouchScroll();
+        const originX = originEvent.touches[0].clientX;
+        const originY = originEvent.touches[0].clientY;
+
+        const attributeX = originEvent.target.getAttribute("data-x");
+        const attributeY = originEvent.target.getAttribute("data-y");
+
+        function ontouchmove(event) {
+            const touchX = event.touches[0].clientX;
+            const touchY = event.touches[0].clientY;
+
+            const deltaX = touchX - originX;
+            const deltaY = touchY - originY;
+
+            originEvent.target.style.top = `${+attributeY + deltaY}px`;
+            originEvent.target.style.left = `${+attributeX + deltaX}px`;
+
+            originEvent.target.setAttribute("data-x", +attributeX + deltaX);
+            originEvent.target.setAttribute("data-y", +attributeY + deltaY);
+        }
+
+        function ontouchend(event) {
+            window.removeEventListener("touchmove", ontouchmove);
+            window.removeEventListener("touchend", ontouchend);
+            enableTouchScroll();
+        }
+
+        window.addEventListener("touchmove", ontouchmove);
+        window.addEventListener("touchend", ontouchend);
+    }
+
+
 </script>
 
 <div class="camping-site-explorer">
@@ -69,7 +116,7 @@
         </div>
     </div>
     {#each locations as location, i}
-        <img class:hidden={i!==locationId} class="js-camping-site-explorer__img" src={location[1]} alt={location[2]} aria-roledescription="Move map with mouse" draggable="false" {onmousedown} />
+        <img class:hidden={i!==locationId} class="js-camping-site-explorer__img" src={location[1]} alt={location[2]} aria-roledescription="Move map with mouse" draggable="false" {onmousedown} {ontouchstart} />
     {/each}
 </div>
 
