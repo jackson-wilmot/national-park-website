@@ -279,7 +279,7 @@
             </div>
             <div>
                 <span>98<i>%</i></span>
-                <p>Vistor's
+                <p>Vistors
                     Satisfied</p>
             </div>
             <div>
