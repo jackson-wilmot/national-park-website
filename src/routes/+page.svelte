@@ -11,7 +11,19 @@
     import { fade } from "svelte/transition";
 
     let ready = $state(false);
+    let largerImageVisible = $state(false);
+    let largerImageSrc = $state("");
+    let largerImageAlt = $state("");
+    let largerImageAspect = $state(1)
+
     setTimeout(() => (ready = true), 1);
+
+    function showLargerImage(event) {
+        largerImageVisible = true;
+        largerImageSrc = event.target.getAttribute("data-src");
+        largerImageAlt = event.target.getAttribute("alt");
+        largerImageAspect = event.target.naturalWidth / event.target.naturalHeight;
+    }
 </script>
 
 <style lang="scss">
@@ -63,8 +75,85 @@
             margin: 1rem;
         }
     }
+
+    .cross-button {
+        position: relative;
+        background: none;
+    }
+
+    .cross-button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1.5rem;
+        height: 0.2rem;
+        background-color: white;
+        border-radius: 0.2rem;
+        transform: rotate(45deg);
+    }
+
+    .cross-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1.5rem;
+        height: 0.2rem;
+        background-color: white;
+        border-radius: 0.2rem;
+        transform: rotate(-45deg);
+    }
+
+    .larger-image-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 6;
+
+        button {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 5rem;
+            height: 5rem;
+            cursor: pointer;
+        }
+
+        img {
+            width: 90%;
+        }
+    }
+
+    .filter {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 5;
+    }
 </style>
 
+{#if largerImageVisible}
+    <div class="filter"></div>
+    <div class="larger-image-container">
+        <button aria-label="Close" onclick={() => largerImageVisible = false} class="cross-button"></button>
+        <img src={largerImageSrc} alt={largerImageAlt} style:aspect-ratio={largerImageAspect} />
+    </div>
+{/if}
 
 <div class="section__1" style:height="fit-content" style:position="relative" use:lazyLoad data-src="/camping-night.jpg">
     <i class="hidden finished active"></i>
@@ -116,9 +205,9 @@
                 </p>
 
                 <div class="section__2__content__image-container">
-                    <img src="/low-quality/preview-image-1.png" data-src="/preview-image-1.webp" alt="View of a swamp" use:lazyLoad loading="lazy" />
-                    <img src="/low-quality/preview-image-2.png" data-src="/preview-image-2.webp" alt="Seaside" use:lazyLoad loading="lazy" />
-                    <img src="/low-quality/preview-image-3.png" data-src="/preview-image-3.webp" alt="A view of a lake" use:lazyLoad loading="lazy" />
+                    <img src="/low-quality/preview-image-1.png" data-src="/preview-image-1.webp" alt="View of a swamp" use:lazyLoad onclick={showLargerImage} />
+                    <img src="/low-quality/preview-image-2.png" data-src="/preview-image-2.webp" alt="Seaside" use:lazyLoad onclick={showLargerImage} />
+                    <img src="/low-quality/preview-image-3.png" data-src="/preview-image-3.webp" alt="A view of a lake" use:lazyLoad onclick={showLargerImage} />
                 </div>
             </div>
         </div>
