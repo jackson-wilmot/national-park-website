@@ -1,3 +1,7 @@
+<!-- import font awesome -->
+{#if true}
+    <script src="https://kit.fontawesome.com/14dd551806.js" crossorigin="anonymous"></script>
+{/if}
 <script>
     import { onMount } from "svelte";
     import { lazyLoad } from "./actions.svelte";
