@@ -1,12 +1,13 @@
 button {
     border: none;
     outline: none;
-    padding: 1rem;
+    padding: .5rem 3rem;
     height: auto;
-    aspect-ratio: 4.5;
+    aspect-ratio: 4;
     font-size: 1rem;
     border-radius: 100px;
-
+    box-sizing: content-box;
+    
     &:hover {
         cursor: pointer;
     }
